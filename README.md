@@ -1,6 +1,6 @@
 # Google News Scraper
 ![Python Version](https://img.shields.io/badge/python-3.13%2B-blue.svg)
-![License](https://img.shields.io/github/license/decodo/google-news-scraper)
+![License](https://img.shields.io/github/license/decodo/Google-News-scraper)
 
 <p align="center">
 <a href="https://dashboard.decodo.com/?page=residential-proxies&utm_source=socialorganic&utm_medium=social&utm_campaign=resi_trial_GITHUB"><img src="https://github.com/user-attachments/assets/60bb48bd-8dcc-48b2-82c9-a218e1e4449c"></a>
